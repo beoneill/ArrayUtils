@@ -1,4 +1,4 @@
-const sum = require('./JSUtil');
+const sum = require('../src/JSUtil');
 
 test('intersect returns the common elements of two arrays', () => {
     const arr1 = ['one','two','three'];

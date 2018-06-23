@@ -1,4 +1,4 @@
-const sum = require('./JSUtil');
+const sum = require('../src/JSUtil');
 
 test('JSUtil is loaded', () => {
   expect(J$).toBeDefined();

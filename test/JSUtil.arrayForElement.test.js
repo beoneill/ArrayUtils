@@ -1,4 +1,4 @@
-const sum = require('./JSUtil');
+const sum = require('../src/JSUtil');
 
 test('arrayForElement will throw an error if element does not exist in any array', () => {
     const obj1 = { someProperty: 'one' };
