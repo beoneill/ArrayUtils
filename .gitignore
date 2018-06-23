@@ -1,0 +1,13 @@
+logs
+*.log
+
+.lock-wscript
+
+build/Release
+
+public
+dist
+
+node_modules
+
+.DS_Store
