@@ -1,4 +1,4 @@
-const sum = require('../src/JSUtil');
+const sum = require('../src/index');
 
 const obj1 = { someProperty: 'one' };
 const obj2 = { someProperty: 'two' };

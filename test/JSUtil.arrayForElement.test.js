@@ -1,6 +1,6 @@
-const sum = require('../src/JSUtil');
+const sum = require('../src/index');
 
-test('arrayForElement will throw an error if element does not exist in any array', () => {
+test('arrayForElement will be undefined if element does not exist in any array', () => {
     const obj1 = { someProperty: 'one' };
     const obj2 = { someProperty: 'two' };
     const obj3 = { someProperty: 'three' };
@@ -8,7 +8,7 @@ test('arrayForElement will throw an error if element does not exist in any array
     const arr1 = [obj1, obj2];
     const arr2 = [obj3];
 
-    expect(() => J$.arrayForElement(obj4, arr1, arr2)).toThrow();
+    expect(J$.arrayForElement(obj4, arr1, arr2)).toBeUndefined();
 });
 
 test('arrayForElement will an array that contains the element', () => {
@@ -20,3 +20,5 @@ test('arrayForElement will an array that contains the element', () => {
 
     expect(J$.arrayForElement(obj2, arr1, arr2)).toStrictEqual(arr1);
 });
+
+// object where properties are different order

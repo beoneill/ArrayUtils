@@ -1,5 +1,7 @@
 (function() {
     
+    var deepEqual = require('deep-equal')
+
     var root = typeof self == 'object' && self.self === self && self ||
             typeof global == 'object' && global.global === global && global ||
             this ||
@@ -33,7 +35,7 @@
         contains: function(element, ...arrays) {
             for (let i=0; i<arrays.length; i++) {
                 const found = arrays[i].filter(current => {
-                    return JSON.stringify(current) === JSON.stringify(element);
+                    return deepEqual(current, element);
                 }).length > 0;
                 
                 if(found) {
@@ -47,7 +49,7 @@
         arraysContainElement: function(element, ...arrays) {
             for (let i=0; i<arrays.length; i++) {
                 const found = arrays[i].filter(current => {
-                    return JSON.stringify(current) === JSON.stringify(element);
+                    return deepEqual(current, element);
                 }).length > 0;
                 
                 if(!found) {
@@ -61,19 +63,18 @@
         arrayForElement: function(element, ...arrays) {
             for (let i=0; i<arrays.length; i++) {
                 const found = arrays[i].filter(current => {
-                    return JSON.stringify(current) === JSON.stringify(element);
+                    return deepEqual(current, element);
                 }).length > 0;
                 
                 if(found) {
                     return arrays[i];
                 }
             }
-    
-            throw new Error("Element does not exist in any array");
+        },
+
+        isEqual: function(a, b) {
+            return deepEqual(a, b);
         }
-
-        // intersect with different types
-
     };
 
     JSUtil.init = function() {
