@@ -21,11 +21,11 @@
             
             let commonEntries = [];
 
-            for(let entry of arrays[0]) {
-                if(this.arraysContainElement(entry, ...arrays)) {
-                    if (!commonEntries.includes(entry)) {
-                        commonEntries.push(entry);   
-                    }
+            const deduplicatedArray = this.removeDuplicates(arrays[0]);
+
+            for(let entry of deduplicatedArray) {
+                if(this.arraysContainElement(entry, ...arrays.slice(1))) {
+                    commonEntries.push(entry);   
                 }
             }
 
@@ -70,6 +70,22 @@
                     return arrays[i];
                 }
             }
+        },
+
+        removeDuplicates: function(array) {
+            const deduplicatedArray = new Array(array[0]);
+            
+            for(let entry of array.slice(1)) {
+                let add = true;
+                for(let uniqueEntry of deduplicatedArray) {
+                    if(deepEqual(uniqueEntry, entry)) {
+                        add = false;
+                    }
+                }
+                if(add) deduplicatedArray.push(entry);
+            }
+
+            return deduplicatedArray;
         },
 
         isEqual: function(a, b) {

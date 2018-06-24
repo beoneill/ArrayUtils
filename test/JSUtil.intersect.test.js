@@ -49,3 +49,11 @@ test('intersect returns the common objects of two arrays', () => {
 
     expect(J$.intersect(arr1, arr2)).toEqual(expected);
 });
+
+test('intersect does not return duplicate object elements of two arrays', () => {
+    const arr1 = [{one: 1}, {two:2}, {two:2}];
+    const arr2 = [{two:2}, {two:2}, {three:3}];
+    const expected = [{two:2}];
+
+    expect(J$.intersect(arr1, arr2)).toEqual(expected);
+});
